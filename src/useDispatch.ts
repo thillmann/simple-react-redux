@@ -14,7 +14,7 @@ type b = ArgumentTypes<typeof test>;
 //   [P in keyof S]: (...args: any[]) => S[P]
 // };
 
-export function useDispatcher<T, S, R extends ActionCreator<S>>(
+export function useDispatch<T, S, R extends ActionCreator<S>>(
   store: Store<T, S>,
   actionCreator: R
 ): (...args: ArgumentTypes<R>) => S {
@@ -32,7 +32,7 @@ export function useDispatcher<T, S, R extends ActionCreator<S>>(
   // );
 }
 
-export function createUseDispatcher<T, S>(store: Store<T, S>) {
+export function createUseDispatch<T, S>(store: Store<T, S>) {
   return <R extends ActionCreator<S>>(actionCreators: R) =>
-    useDispatcher<T, S, R>(store, actionCreators);
+    useDispatch<T, S, R>(store, actionCreators);
 }

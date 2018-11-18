@@ -2,7 +2,7 @@ import createStore from '../createStore';
 import combineReducer from '../combineReducers';
 import applyMiddleware, { Middleware } from '../middleware';
 import { createUseSelect } from '../useSelect';
-import { createUseDispatcher } from '../useDispatcher';
+import { createUseDispatch } from '../useDispatch';
 import { Action } from '../action';
 
 interface AssetState {
@@ -42,9 +42,9 @@ function logger<T, S>(): Middleware<T, S> {
 const store = createStore(rootReducer, applyMiddleware(logger()));
 
 const myUseSelect = createUseSelect(store);
-const myUseDispatcher = createUseDispatcher(store);
+const myUseDispatch = createUseDispatch(store);
 
-const dispatcher = myUseDispatcher(actionTest);
+const dispatcher = myUseDispatch(actionTest);
 
 const test = myUseSelect(state => state.asset.foo);
 const test2 = myUseSelect(state => state.auth.bar);
