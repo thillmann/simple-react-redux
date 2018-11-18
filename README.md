@@ -1,5 +1,7 @@
 # Simple React Redux Store
 
+### This is a WIP!
+
 The store is largely based on [react-redux](https://github.com/reduxjs/react-redux/). It makes use of the proposed [React Hooks API](https://github.com/reduxjs/react-redux/issues/1063) and is fully typed.
 
 ## Installation
