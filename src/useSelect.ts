@@ -1,9 +1,13 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { Store } from './store';
+import { Action } from './action';
 
 type SelectorFn<T, R> = (state: T) => R;
 
-export function useSelect<T, S, R>(store: Store<T, S>, selector: SelectorFn<T, R>): R {
+export function useSelect<T, S extends Action, R>(
+  store: Store<T, S>,
+  selector: SelectorFn<T, R>
+): R {
   const initialState = selector(store.getState());
   const [state, setState] = useState(initialState);
   useEffect(
@@ -19,6 +23,8 @@ export function useSelect<T, S, R>(store: Store<T, S>, selector: SelectorFn<T, R
   return state;
 }
 
-export function createUseSelect<T, S>(store: Store<T, S>): <R>(selector: SelectorFn<T, R>) => R {
+export function createUseSelect<T, S extends Action>(
+  store: Store<T, S>
+): <R>(selector: SelectorFn<T, R>) => R {
   return <R>(selector: SelectorFn<T, R>) => useSelect(store, selector);
 }

@@ -3,5 +3,5 @@ export * from './store';
 export * from './combineReducers';
 export * from './middleware';
 export * from './createStore';
-export * from './useDispatcher';
+export * from './useDispatch';
 export * from './useSelect';

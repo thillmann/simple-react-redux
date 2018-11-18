@@ -155,7 +155,7 @@ function _createStore<T, S extends Action>(
   };
 }
 
-export default function createStore<T, S extends Action>(
+export function createStore<T, S extends Action>(
   reducer: Reducer<T, S>,
   initialState?: T | Enhancer<T, S>,
   enhancer?: Enhancer<T, S>

@@ -1,4 +1,5 @@
 import { Store } from './store';
+import { Action } from './action';
 
 type ArgumentTypes<F extends Function> = F extends (...args: infer A) => any
   ? A
@@ -6,15 +7,11 @@ type ArgumentTypes<F extends Function> = F extends (...args: infer A) => any
 
 type ActionCreator<S> = (...args: unknown[]) => S;
 
-function test(a: string, b: boolean): void {}
-
-type b = ArgumentTypes<typeof test>;
-
 // type ActionCreators<S> = {
 //   [P in keyof S]: (...args: any[]) => S[P]
 // };
 
-export function useDispatch<T, S, R extends ActionCreator<S>>(
+export function useDispatch<T, S extends Action, R extends ActionCreator<S>>(
   store: Store<T, S>,
   actionCreator: R
 ): (...args: ArgumentTypes<R>) => S {
@@ -32,7 +29,7 @@ export function useDispatch<T, S, R extends ActionCreator<S>>(
   // );
 }
 
-export function createUseDispatch<T, S>(store: Store<T, S>) {
+export function createUseDispatch<T, S extends Action>(store: Store<T, S>) {
   return <R extends ActionCreator<S>>(actionCreators: R) =>
     useDispatch<T, S, R>(store, actionCreators);
 }

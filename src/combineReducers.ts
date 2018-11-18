@@ -3,7 +3,7 @@ import { Reducer } from './reducer';
 
 type CombinedReducer<T, S extends Action> = { [P in keyof T]: Reducer<T[P], S> };
 
-export default function combineReducer<T, S extends Action>(
+export function combineReducer<T, S extends Action>(
   reducers: CombinedReducer<T, S>
 ): Reducer<T, S> {
   const reducerKeys = Object.keys(reducers);
