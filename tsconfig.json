@@ -20,7 +20,7 @@
     "jsx": "react"
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts", "src/example/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts", "example/**/*"],
   "compileOnSave": false,
   "buildOnSave": false
 }
