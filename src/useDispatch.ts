@@ -5,13 +5,13 @@ type ArgumentTypes<F extends Function> = F extends (...args: infer A) => any
   ? A
   : never;
 
-type ActionCreator<S> = (...args: unknown[]) => S;
+type ActionCreator = (...args: unknown[]) => any;
 
 // type ActionCreators<S> = {
 //   [P in keyof S]: (...args: any[]) => S[P]
 // };
 
-export function useDispatch<T, S extends Action, R extends ActionCreator<S>>(
+export function useDispatch<T, S extends Action, R extends ActionCreator>(
   store: Store<T, S>,
   actionCreator: R
 ): (...args: ArgumentTypes<R>) => S {
@@ -30,6 +30,6 @@ export function useDispatch<T, S extends Action, R extends ActionCreator<S>>(
 }
 
 export function createUseDispatch<T, S extends Action>(store: Store<T, S>) {
-  return <R extends ActionCreator<S>>(actionCreators: R) =>
+  return <R extends ActionCreator>(actionCreators: R) =>
     useDispatch<T, S, R>(store, actionCreators);
 }

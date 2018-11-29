@@ -1,8 +1,8 @@
 {
   "name": "simple-react-redux",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,13 +10,13 @@
   "author": "Timo Hillmann <timo@hillmann.cc>",
   "license": "MIT",
   "dependencies": {
-    "react": "^16.6.3",
+    "react": "16.7.0-alpha.2",
     "rxjs": "^6.3.3",
     "symbol-observable": "^1.2.0"
   },
   "devDependencies": {
-    "@types/react": "^16.7.6",
-    "@types/react-dom": "^16.0.9",
+    "@types/react": "16.7.8",
+    "@types/react-dom": "16.0.11",
     "react-dom": "^16.6.3",
     "typescript": "^3.1.6"
   }
